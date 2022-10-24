@@ -2,7 +2,7 @@
 
 查询多台服务器的显卡使用情况，示例：
 
-![image](https://github.com/JT-Ushio/research-tools/tree/feature/query-gpu/query-gpu/example.jpg)
+![example-image](example.jpg)
 
 列名    | 含义
 :-------| :--- 
