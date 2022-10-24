@@ -58,6 +58,6 @@ Host 88
 
 ```shell
 sudo cp query_gpu* /usr/local/bin/
-sudo chmod 755 query_gpu*
+sudo chmod 755 /usr/local/bin/query_gpu*
 query_gpu 66 88
 ```
