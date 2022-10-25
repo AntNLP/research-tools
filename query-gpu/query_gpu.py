@@ -24,31 +24,35 @@ def get_gpu(phys_machs):
 
 def generate_table(phys_machs):
     table = Table(title="[bold]AntNLP GPU List", title_justify='center', caption_justify='center')
-    table.add_column("IP")
-    table.add_column("ID")
+    table.add_column("IP", justify='center')
+    table.add_column("ID", justify='center')
     table.add_column("Card", justify='center')
     table.add_column("FreeMem", justify='right')
     table.add_column("GPU%", justify='right')
     table.add_column("Mem%", justify='right')
     gpu = get_gpu(phys_machs)
     for i in range(len(gpu)):
-        gpu_now = list(map(lambda x:str(x), gpu[i]))
-        h = (max(gpu[i][-1], gpu[i][-2]))/100
+        gpu_now = gpu[i]
+        h = (max(gpu_now[-1], gpu_now[-2]))/100
         r, g, b = int(h*255), int((1 - 0.7*h)*255), int(0.4*h*255)
         table.add_row(
             f"[bold rgb({r},{g},{b})]{gpu_now[0]}",
             f"[bold rgb({r},{g},{b})]{gpu_now[1]}",
             f"[bold rgb({r},{g},{b})]{gpu_now[2]}",
             f"[bold rgb({r},{g},{b})]{gpu_now[3]} MB",
-            f"[bold rgb({r},{g},{b})]{gpu_now[4]}",
-            f"[bold rgb({r},{g},{b})]{gpu_now[5]}",)
+            f"[bold rgb({r},{g},{b})]{gpu_now[4]}%",
+            f"[bold rgb({r},{g},{b})]{gpu_now[5]}%",)
     return table
 
-n_phys_machs = len(sys.argv)
-assert n_phys_machs != 1, "No physical machine arguments."
-phys_machs = sys.argv[1:]
+if __name__ == '__main__':
+    if len(sys.argv) == 1:
+        print("No physical machine arguments.")
+        print(f"Usage: {sys.argv[0]} host1 host2 ...")
+        exit(1)
 
-with Live(generate_table(phys_machs), refresh_per_second=1) as live:
-    for i in range(10):
-        live.update(generate_table(phys_machs))
-        time.sleep(5)
+    phys_machs = sys.argv[1:]
+
+    with Live(generate_table(phys_machs), refresh_per_second=1) as live:
+        for i in range(10):
+            live.update(generate_table(phys_machs))
+            time.sleep(5)
