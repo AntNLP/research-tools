@@ -58,10 +58,17 @@ Host 88
 
 ### Step3: 复制命令并执行
 
-对于 Linux/Mac OS 用户，
-
+对于 Linux/Mac OS 用户（有 ROOT 权限），
 ```shell
-sudo cp query_gpu* /usr/local/bin/
-sudo chmod 755 /usr/local/bin/query_gpu*
+sudo cp query_gpu.py /usr/local/bin/
+sudo chmod 755 /usr/local/bin/query_gpu.py
+query_gpu 66 88
+```
+
+对于 Linux/Mac OS 用户（没有 ROOT 权限），
+```shell
+sudo cp query_gpu.py ~/.local/bin/
+export PATH=~/.local/bin/:$PATH
+sudo chmod 755 ~/.local/bin/query_gpu.py
 query_gpu 66 88
 ```
