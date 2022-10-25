@@ -3,10 +3,23 @@
 查询多台服务器的显卡使用情况，帮助快速选择可用的GPU，工具特性
 + 按照显卡空闲内存从大到小排序
 + 热力图显示显卡繁忙程度，绿色代表空闲，红色代表繁忙 
++ 可选参数 `-u` 显示每张显卡的用户（支持多个）
 
 
-示例：
-![example-image](example.jpg)
+示例1：
+
+```shell
+query_gpu host1 host2 ...
+```
+![example-image](example_linux.jpg)
+
+示例2，额外显示用户信息（可能使查询变慢）：
+
+```shell
+query_gpu -u host1 host2 ...
+```
+![example-image](example_mac.jpg)
+
 
 列名    | 含义
 :-------| :--- 
@@ -60,15 +73,15 @@ Host 88
 
 对于 Linux/Mac OS 用户（有 ROOT 权限），
 ```shell
-sudo cp query_gpu.py /usr/local/bin/
-sudo chmod 755 /usr/local/bin/query_gpu.py
+sudo cp query_gpu.py /usr/local/bin/query_gpu
+sudo chmod 755 /usr/local/bin/query_gpu
 query_gpu 66 88
 ```
 
 对于 Linux/Mac OS 用户（没有 ROOT 权限），
 ```shell
-sudo cp query_gpu.py ~/.local/bin/
+cp query_gpu.py ~/.local/bin/query_gpu
 export PATH=~/.local/bin/:$PATH
-sudo chmod 755 ~/.local/bin/query_gpu.py
+chmod 755 ~/.local/bin/query_gpu
 query_gpu 66 88
 ```
