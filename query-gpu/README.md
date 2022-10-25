@@ -11,7 +11,7 @@
 ```shell
 query_gpu host1 host2 ...
 ```
-![example-image](example_linux.jpg)
+![example-image](example_linux.jpeg)
 
 示例2，额外显示用户信息（可能使查询变慢）：
 
