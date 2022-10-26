@@ -6,26 +6,25 @@
 + 可选参数 `-u` 显示每张显卡的用户（支持多个）
 
 
-示例1：
+示例1，默认显示：
 
 ```shell
 query_gpu host1 host2 ...
 ```
-![example-image](example_linux.jpeg)
+![example-image](example_mac.jpg)
 
-示例2，额外显示用户信息（可能使查询变慢）：
+示例2，额外显示用户信息：
 
 ```shell
 query_gpu -u host1 host2 ...
 ```
-![example-image](example_mac.jpg)
+![example-image](example_linux.jpeg)
 
 
 列名    | 含义
 :-------| :--- 
 IP      | 服务器IP别名
-ID      | GPU ID (0, 1, 2, ...)
-Card    | 显卡名称
+Card    | GPU ID ([0], [1] ...) + 显卡名称
 FreeMem | 空闲显存 MB (降序排序关键字)
 GPU%    | GPU 当前算力占用百分比
 Mem%    | GPU 当前显存占用百分比
